@@ -1,0 +1,19 @@
+-Scatter Plot Harga Rumah berdasarkan Bedrooms
+
+col_list=['Price', 'Bedrooms']
+numhouse = data_agfan[data_agfan.columns[data_agfan.columns.isin(col_list)]]
+numhouse.plot.scatter(x='Bedrooms', y='Price')
+
+-Scatter Plot Harga Rumah berdasarkan Bathrooms
+
+col_list=['Price', 'Bathrooms']
+numhouse = data_agfan[data_agfan.columns[data_agfan.columns.isin(col_list)]]
+numhouse.plot.scatter(x='Bathrooms', y='Price')
+
+-Grouped Boxplot berdasarkan Bathrooms dengan Price
+
+col_list=['Price', 'Bathrooms']
+numhouse = data_agfan[data_agfan.columns[data_agfan.columns.isin(col_list)]]
+plt.figure(figsize=(15,5))
+numhouse.boxplot(by='Price')
+plt.show()
