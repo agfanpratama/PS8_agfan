@@ -1,0 +1,48 @@
+-import pandas as pd
+
+#from pandas.tools import plotting
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.model_selection import train_test_split, cross_val_score, KFold, GridSearchCV
+from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier,export_graphviz
+from sklearn.metrics import confusion_matrix, accuracy_score
+from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
+
+-Script
+
+from google.colab import files
+uploaded=files.upload()
+data_agfan= pd.read_csv('/content/houseprice.csv', sep = ";")
+data_agfan.head(5)
+plt.figure(figsize=(15,5))
+plt.subplot(121)
+data_agfan['Price'].plot.hist(bins=10, title='Price')
+plt.show()
+#Boxplot dari harga rumah/Price
+col_list=['Price']
+numhouse = data_agfan[data_agfan.columns[data_agfan.columns.isin(col_list)]]
+plt.figure(figsize=(10,5))
+numhouse.boxplot(sym='r*', grid=False)
+plt.show()
+
+-Histogram dari Price
+
+plt.figure(figsize=(15,5))
+plt.subplot(121)
+data_agfan['Price'].plot.hist(bins=10, title='Price')
+plt.show()
+
+-Scatter dari Price
+
+col_list=['Price', 'SqFt']
+numhouse = data_agfan[data_agfan.columns[data_agfan.columns.isin(col_list)]]
+numhouse.plot.scatter(x='SqFt', y='Price')
+
+-Group Boxplot berdasarkan Bedrooms
+
+col_list=['Price', 'Bedrooms']
+numhouse = data_agfan[data_agfan.columns[data_agfan.columns.isin(col_list)]]
+plt.figure(figsize=(15,5))
+numhouse.boxplot(by='Bedrooms')
+plt.show()
